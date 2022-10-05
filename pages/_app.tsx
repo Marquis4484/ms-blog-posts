@@ -1,8 +1,22 @@
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
+import {useEffect} from 'react';
+import {getCookieValue, setCookieValue} from '../utils/helpers'
 
-function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+import '../styles/globals.scss';
+import { Layout } from '../components';
+
+function MyApp({ Component, pageProps }) {
+
+  useEffect(()=>{
+    if (!getCookieValue('g-theme')) {
+      setCookieValue('g-theme', 'LIGHT', 2147483647, '/');
+    }
+  },[])
+  
+  return (
+    <Layout>
+      <Component {...pageProps} />
+    </Layout>
+  );
 }
 
-export default MyApp
+export default MyApp;
