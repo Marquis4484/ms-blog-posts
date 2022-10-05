@@ -11,7 +11,7 @@ function MyApp({ Component, pageProps }) {
       setCookieValue('g-theme', 'LIGHT', 2147483647, '/');
     }
   },[])
-  
+
   return (
     <Layout>
       <Component {...pageProps} />
